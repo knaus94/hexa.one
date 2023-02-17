@@ -19,46 +19,58 @@ export default class HexaWebApi {
 
     protected async prices(appId: number) {
         return new Promise((resolve: (value: GetPricesResponse) => void, reject: () => void) => {
-            this.hexa
-                .request({
-                    url: `market/prices/${appId}`,
-                })
-                .then(({ data }: { data: GetPricesResponse }) => {
-                    return resolve(data);
-                })
-                .catch((e) => {
-                    return reject();
-                });
+            try {
+                this.hexa
+                    .request({
+                        url: `market/prices/${appId}`,
+                    })
+                    .then(({ data }: { data: GetPricesResponse }) => {
+                        return resolve(data);
+                    })
+                    .catch((e) => {
+                        return reject();
+                    });
+            } catch (e) {
+                return reject();
+            }
         });
     }
 
     protected async items(appId: number) {
         return new Promise((resolve: (value: GetItemsResponse) => void, reject: () => void) => {
-            this.hexa
-                .request({
-                    url: `market/items/${appId}`,
-                })
-                .then(({ data }: { data: GetItemsResponse }) => {
-                    return resolve(data);
-                })
-                .catch((e) => {
-                    return reject();
-                });
+            try {
+                this.hexa
+                    .request({
+                        url: `market/items/${appId}`,
+                    })
+                    .then(({ data }: { data: GetItemsResponse }) => {
+                        return resolve(data);
+                    })
+                    .catch((e) => {
+                        return reject();
+                    });
+            } catch (e) {
+                return reject();
+            }
         });
     }
 
     protected async account() {
         return new Promise((resolve: (value: GetAccountResponse) => void, reject: () => void) => {
-            this.hexa
-                .request({
-                    url: `api/account`,
-                })
-                .then(({ data }: { data: GetAccountResponse }) => {
-                    return resolve(data);
-                })
-                .catch((e) => {
-                    return reject();
-                });
+            try {
+                this.hexa
+                    .request({
+                        url: `api/account`,
+                    })
+                    .then(({ data }: { data: GetAccountResponse }) => {
+                        return resolve(data);
+                    })
+                    .catch((e) => {
+                        return reject();
+                    });
+            } catch (e) {
+                return reject();
+            }
         });
     }
 }
